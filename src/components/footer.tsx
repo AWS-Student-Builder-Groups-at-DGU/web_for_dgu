@@ -1,5 +1,5 @@
 import Link from "next/link"
-import {Mail, Instagram, Github, ExternalLink, Linkedin} from "lucide-react"
+import {Mail, Instagram, Github, Linkedin} from "lucide-react"
 import Image from "next/image";
 import logo from "P/Image/common/logo.png";
 
@@ -37,7 +37,7 @@ export function Footer() {
                             </a>
                             <a href="https://github.com/AWS-Cloud-Club-at-Dongguk" className="text-gray-400 hover:text-orange-400 transition-colors" title="GitHub">
                                 <Github className="h-5 w-5" />
-                            </a>    
+                            </a>
                             <a href="https://www.linkedin.com/in/aws-cloud-club-at-dongguk-94265a36b" type="_blink" className="text-gray-400 hover:text-orange-400 transition-colors" title="LinkedIn">
                                 <Linkedin className="h-5 w-5" />
                             </a>
