@@ -2,17 +2,30 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Mail, Linkedin, Github } from "lucide-react"
 
-import cbkim from "P/Image/profile/cbkim.jpg"
 import Image from "next/image";
 
 export function MemberSection() {
-    const positionToColor = {
+    type Position = "Captain" | "DevRel" | "Member";
+
+    const positionToColor: Record<Position, string> = {
         Captain: "bg-orange-600",
         DevRel: "bg-orange-400",
         Member: "bg-gray-500",
     };
 
-    const members = [
+    interface Member {
+        name: string;
+        position: Position;
+        year: string;
+        bio: string;
+        image: string;
+        email: string;
+        linkedin: string;
+        github: string;
+        interest: string[];
+    }
+
+    const members: Member[] = [
         {
             name: "이도형",
             position: "Captain",
@@ -40,7 +53,7 @@ export function MemberSection() {
             position: "DevRel",
             year: "융합보안학과 3학년",
             bio: "🧑‍💻 백엔드 중심의 5년차 풀스택 개발자, DevOps/SRE를 꿈꾸며 소통과 실질적 가치를 추구합니다.",
-            image: cbkim,
+            image: "",
             email: "flqld86851@gmail.com",
             linkedin: "https://github.com/devbini",
             github: "https://linkedin.com/in/devbini",
