@@ -1,66 +1,109 @@
-import { Users } from "lucide-react"
+import {ArrowRight, Cloud, Code, Users} from "lucide-react"
 import Link from "next/link"
-import Image from "next/image";
-import logo from "P/Image/common/logo.png"
+import {Button} from "@/components/ui/button";
+
+const keyframes = `
+  @keyframes gradient-flow {
+    0% { background-position: 0% center; }
+    100% { background-position: -200% center; }
+  }
+`;
 
 export function Hero() {
     return (
-        <section className="bg-gradient-to-br from-orange-50 via-white to-blue-50">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-                <div className="grid lg:grid-cols-5 gap-12 items-center">
-                    <div className="space-y-8 lg:col-span-3">
+        <>
+            <style>{keyframes}</style>
+            <section
+                className="min-h-screen flex flex-col justify-center items-center px-4 pb-16 bg-gradient-to-br from-slate-900 via-orange-900 to-slate-900 relative overflow-hidden">
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <div
+                        className="absolute top-1/4 left-1/6 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
+                    <div
+                        className="absolute bottom-1/3 right-1/6 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+                    <div
+                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-orange-500/5 to-orange-600/5 rounded-full blur-3xl"></div>
+                </div>
+
+                <div className="max-w-6xl mx-auto px-6 py-20 relative z-10">
+                    <div className="text-center space-y-8">
+                        <div
+                            className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-full border border-orange-500/30 backdrop-blur-sm">
+                            <Cloud className="w-5 h-5 text-orange-400"/>
+                            <span className="text-orange-300 text-sm font-semibold tracking-wide">Dongguk Univ.</span>
+                        </div>
+
                         <div className="space-y-4">
-                            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
-                                Welcome to<br/>
-                                <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
-                                    AWS Cloud Club at DGU
+                            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-tight">
+                                <span
+                                    className="block bg-gradient-to-r from-orange-400 via-orange-300 to-orange-500 text-transparent bg-clip-text bg-[length:200%_auto] [animation:gradient-flow_3s_linear_infinite]">
+                                    AWS Cloud Clubs
                                 </span>
                             </h1>
-                            <p className="text-xl text-gray-600 leading-relaxed">
-                                <b>서울 소재 동국대학교의 유일한 클라우드 컴퓨팅 동아리입니다.</b> <br/>
-                                AWS Cloud Clubs(ACC)은 AWS의 공식적인 대학생 커뮤니티로, <br/>
-                                한국에서는 10개의 학교가 모여 연합의 형태로 활동하고 있어요.<br/><br/>
-                                ACC Korea는 대학생 개발자 또는 개발자 지망생들이 학교의 장벽을 뛰어넘으며,<br/>
-                                다양한 기술에 대한 지식과 경험을 접하고 서로 공유하는 것을 최우선으로 여겨요.
-                            </p>
+                            <div
+                                className="w-24 h-1.5 bg-gradient-to-r from-orange-500 to-orange-600 mx-auto rounded-full"></div>
                         </div>
 
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <button>
-                                <Link href="/about">더 알아보기</Link>
-                            </button>
-                        </div>
-
-                        <div className="grid grid-cols-3 gap-8 pt-8">
-                            <div className="text-center">
-                                <Users className="h-8 w-8 text-orange-600 mx-auto mb-2" />
-                                <div className="text-2xl font-bold text-gray-900">1기</div>
-                                <div className="text-sm text-gray-600">현재 기수</div>
+                        <div className="max-w-4xl mx-auto">
+                            <div
+                                className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 md:p-10 border border-white/10 shadow-2xl">
+                                <p className="text-gray-200 text-lg md:text-xl leading-relaxed">
+                                    <span className="font-bold text-orange-300">AWS Cloud Clubs at Dongguk</span>
+                                    은 동국대학교 유일의 클라우드 동아리로,
+                                    <br/>
+                                    다양한 Hands-On 세션과 스터디를 통해 함께 성장하는 AWS 공식 커뮤니티입니다.
+                                </p>
                             </div>
                         </div>
-                    </div>
 
-                    <div className="relative lg:col-span-2">
-                        <div className="absolute -top-20 -right-4 z-10">
-                            <Image
-                                src={ logo }
-                                alt="AWS Cloud Club at dgu Image"
-                                className="rounded-2xl shadow-2xl"
-                            />
+                        <div className="grid grid-cols-2 gap-8 max-w-2xl mx-auto pt-8">
+                            <div className="text-center group">
+                                <div
+                                    className="bg-gradient-to-br from-orange-500/20 to-orange-600/20 p-4 rounded-2xl mb-3 backdrop-blur-sm border border-orange-500/20 group-hover:scale-105 transition-transform duration-300">
+                                    <Users className="h-8 w-8 text-orange-400 mx-auto"/>
+                                </div>
+                                <div className="text-3xl font-bold text-white">1기</div>
+                                <div className="text-sm text-gray-400">Current Class</div>
+                            </div>
+                            <div className="text-center group">
+                                <div
+                                    className="bg-gradient-to-br from-orange-500/20 to-orange-600/20 p-4 rounded-2xl mb-3 backdrop-blur-sm border border-orange-500/20 group-hover:scale-105 transition-transform duration-300">
+                                    <Code className="h-8 w-8 text-orange-400 mx-auto"/>
+                                </div>
+                                <div className="text-3xl font-bold text-white">2회</div>
+                                <div className="text-sm text-gray-400">Sessions</div>
+                            </div>
                         </div>
-                        <div className="absolute -top-4 -right-4 w-72 h-72 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full opacity-20 blur-3xl"></div>
 
-                        <div className="relative z-10">
-                            <Image
-                                src={ logo }
-                                alt="AWS Cloud Club at dgu Image"
-                                className="rounded-2xl shadow-2xl"
-                            />
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+                            <Button
+                                asChild
+                                size="lg"
+                                className="group px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-xl hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-orange-500/25 border-0"
+                            >
+                                <Link href="/session">
+                                    <span>세션 목록</span>
+                                    <ArrowRight
+                                        className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300"/>
+                                </Link>
+                            </Button>
+                            <Button
+                                asChild
+                                variant="outline"
+                                size="lg"
+                                className="px-8 py-4 bg-white/10 backdrop-blur-lg text-gray-200 font-medium rounded-xl border border-white/20 hover:bg-white/20 hover:text-white transition-all duration-300"
+                            >
+                                <Link href="/about">더 알아보기</Link>
+                            </Button>
                         </div>
-                        <div className="absolute -bottom-4 -left-4 w-72 h-72 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full opacity-20 blur-3xl"></div>
                     </div>
                 </div>
-            </div>
-        </section>
+
+                <div className="absolute top-20 left-10 w-2 h-2 bg-orange-400 rounded-full animate-ping"></div>
+                <div
+                    className="absolute top-40 right-20 w-3 h-3 bg-orange-500 rounded-full animate-ping delay-1000"></div>
+                <div
+                    className="absolute bottom-40 left-20 w-2 h-2 bg-orange-600 rounded-full animate-ping delay-2000"></div>
+            </section>
+        </>
     )
 }
