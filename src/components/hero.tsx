@@ -1,109 +1,144 @@
-import {ArrowRight, Cloud, Code, Users} from "lucide-react"
-import Link from "next/link"
-import {Button} from "@/components/ui/button";
+"use client";
 
-const keyframes = `
-  @keyframes gradient-flow {
-    0% { background-position: 0% center; }
-    100% { background-position: -200% center; }
-  }
-`;
+import { ArrowRight, Code, Users, Network, BookOpenCheck } from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { useRef } from "react";
+import type { MouseEvent } from "react";
+import { motion, useMotionValue, useTransform, Variants } from "framer-motion";
+
+const FeatureCard = ({ icon, title, children }: { icon: React.ReactNode, title: string, children: React.ReactNode }) => (
+    <motion.div
+        className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 text-left border border-white/10 transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:scale-105"
+        variants={itemVariants}
+    >
+        <div className="flex items-center gap-4 mb-3">
+            {icon}
+            <h3 className="text-xl font-bold text-white">{title}</h3>
+        </div>
+        <p className="text-gray-400 text-sm leading-relaxed">{children}</p>
+    </motion.div>
+);
+
+const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.15,
+        },
+    },
+};
+
+const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.6,
+            ease: "easeInOut",
+        },
+    },
+};
 
 export function Hero() {
+    const ref = useRef<HTMLDivElement>(null);
+
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+    const transformX = useTransform(mouseX, [0, 1], [-25, 25]);
+    const transformY = useTransform(mouseY, [0, 1], [-25, 25]);
+    const transformXInverse = useTransform(mouseX, [0, 1], [25, -25]);
+    const transformYInverse = useTransform(mouseY, [0, 1], [25, -25]);
+
+    const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
+        if (!ref.current) return;
+
+        const { left, top, width, height } = ref.current.getBoundingClientRect();
+        mouseX.set((event.clientX - left) / width);
+        mouseY.set((event.clientY - top) / height);
+    };
+
     return (
-        <>
-            <style>{keyframes}</style>
-            <section
-                className="min-h-screen flex flex-col justify-center items-center px-4 pb-16 bg-gradient-to-br from-slate-900 via-orange-900 to-slate-900 relative overflow-hidden">
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div
-                        className="absolute top-1/4 left-1/6 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
-                    <div
-                        className="absolute bottom-1/3 right-1/6 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-                    <div
-                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-orange-500/5 to-orange-600/5 rounded-full blur-3xl"></div>
-                </div>
+        <section
+            ref={ref}
+            onMouseMove={handleMouseMove}
+            className="min-h-screen flex flex-col justify-center items-center px-4 py-24 bg-gradient-to-b from-slate-900 to-black relative overflow-hidden"
+        >
+            <div className="absolute inset-0 pointer-events-none">
+                <motion.div
+                    className="absolute top-0 left-0 w-1/2 h-1/2 bg-orange-900/20 rounded-full blur-3xl"
+                    style={{ x: transformX, y: transformY }}
+                />
+                <motion.div
+                    className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-orange-900/20 rounded-full blur-3xl"
+                    style={{ x: transformXInverse, y: transformYInverse }}
+                />
+            </div>
 
-                <div className="max-w-6xl mx-auto px-6 py-20 relative z-10">
-                    <div className="text-center space-y-8">
-                        <div
-                            className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-full border border-orange-500/30 backdrop-blur-sm">
-                            <Cloud className="w-5 h-5 text-orange-400"/>
-                            <span className="text-orange-300 text-sm font-semibold tracking-wide">Dongguk Univ.</span>
-                        </div>
+            <motion.div
+                className="max-w-4xl mx-auto px-6 relative z-10 text-center"
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
+            >
+                <div className="space-y-6">
+                    <motion.h1
+                        className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500"
+                        variants={itemVariants}
+                    >
+                        AWS Cloud Clubs at DGU
+                    </motion.h1>
+                    <motion.p
+                        className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto"
+                        variants={itemVariants}
+                    >
+                        <span className="font-semibold text-orange-300">AWS Cloud Clubs</span>는 AWS의 <span className="font-semibold text-orange-300">공식적인 대학생 커뮤니티</span>입니다.
+                        <br/>다양한 기술, 지식, 경험을 공유하는 것을 최우선으로 합니다.
+                    </motion.p>
 
-                        <div className="space-y-4">
-                            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-tight">
-                                <span
-                                    className="block bg-gradient-to-r from-orange-400 via-orange-300 to-orange-500 text-transparent bg-clip-text bg-[length:200%_auto] [animation:gradient-flow_3s_linear_infinite]">
-                                    AWS Cloud Clubs
-                                </span>
-                            </h1>
-                            <div
-                                className="w-24 h-1.5 bg-gradient-to-r from-orange-500 to-orange-600 mx-auto rounded-full"></div>
-                        </div>
-
-                        <div className="max-w-4xl mx-auto">
-                            <div
-                                className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 md:p-10 border border-white/10 shadow-2xl">
-                                <p className="text-gray-200 text-lg md:text-xl leading-relaxed">
-                                    <span className="font-bold text-orange-300">AWS Cloud Clubs at Dongguk</span>
-                                    은 동국대학교 유일의 클라우드 동아리로,
-                                    <br/>
-                                    다양한 Hands-On 세션과 스터디를 통해 함께 성장하는 AWS 공식 커뮤니티입니다.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div className="grid grid-cols-2 gap-8 max-w-2xl mx-auto pt-8">
-                            <div className="text-center group">
-                                <div
-                                    className="bg-gradient-to-br from-orange-500/20 to-orange-600/20 p-4 rounded-2xl mb-3 backdrop-blur-sm border border-orange-500/20 group-hover:scale-105 transition-transform duration-300">
-                                    <Users className="h-8 w-8 text-orange-400 mx-auto"/>
-                                </div>
-                                <div className="text-3xl font-bold text-white">1기</div>
-                                <div className="text-sm text-gray-400">Current Class</div>
-                            </div>
-                            <div className="text-center group">
-                                <div
-                                    className="bg-gradient-to-br from-orange-500/20 to-orange-600/20 p-4 rounded-2xl mb-3 backdrop-blur-sm border border-orange-500/20 group-hover:scale-105 transition-transform duration-300">
-                                    <Code className="h-8 w-8 text-orange-400 mx-auto"/>
-                                </div>
-                                <div className="text-3xl font-bold text-white">2회</div>
-                                <div className="text-sm text-gray-400">Sessions</div>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-                            <Button
-                                asChild
-                                size="lg"
-                                className="group px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-xl hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-orange-500/25 border-0"
-                            >
-                                <Link href="/session">
-                                    <span>세션 목록</span>
-                                    <ArrowRight
-                                        className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300"/>
-                                </Link>
-                            </Button>
-                            <Button
-                                asChild
-                                variant="outline"
-                                size="lg"
-                                className="px-8 py-4 bg-white/10 backdrop-blur-lg text-gray-200 font-medium rounded-xl border border-white/20 hover:bg-white/20 hover:text-white transition-all duration-300"
-                            >
-                                <Link href="/about">더 알아보기</Link>
-                            </Button>
-                        </div>
+                    <div className="grid md:grid-cols-2 gap-4 pt-8 max-w-4xl mx-auto">
+                        <FeatureCard icon={<Code className="w-8 h-8 text-orange-400 flex-shrink-0" />} title="Hands-On Labs">
+                            실제 AWS 콘솔을 다루며 인프라를 구축하고,<br/> 애플리케이션을 배포하는 실습 세션을 진행합니다.
+                        </FeatureCard>
+                        <FeatureCard icon={<BookOpenCheck className="w-8 h-8 text-orange-400 flex-shrink-0" />} title="주제별 스터디">
+                            자격증 취득, DevOps, CS 등 <br/>특정 주제를 깊이 있게 공부합니다.
+                        </FeatureCard>
+                        <FeatureCard icon={<Users className="w-8 h-8 text-orange-400 flex-shrink-0" />} title="네트워킹">
+                            AWS Community Hero와 Builder 초청,<br/>Student Community Day 등의 네트워크 기회!
+                        </FeatureCard>
+                        <FeatureCard icon={<Network className="w-8 h-8 text-orange-400 flex-shrink-0" />} title="Global Hackerton">
+                            전 세계 대학생들과 겨루는 AWS 주최 공식 해커톤!<br/>AWS 공인 수상과 인증의 기회를 얻습니다.
+                        </FeatureCard>
                     </div>
-                </div>
 
-                <div className="absolute top-20 left-10 w-2 h-2 bg-orange-400 rounded-full animate-ping"></div>
-                <div
-                    className="absolute top-40 right-20 w-3 h-3 bg-orange-500 rounded-full animate-ping delay-1000"></div>
-                <div
-                    className="absolute bottom-40 left-20 w-2 h-2 bg-orange-600 rounded-full animate-ping delay-2000"></div>
-            </section>
-        </>
-    )
+                    <motion.div
+                        className="flex flex-col sm:flex-row gap-4 justify-center pt-10"
+                        variants={itemVariants}
+                    >
+                        <Button
+                            asChild
+                            size="lg"
+                            className="group px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-xl hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-orange-500/25 border-0"
+                        >
+                            <Link href="/session">
+                                <span>지난 세션 목록</span>
+                                <ArrowRight
+                                    className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300"/>
+                            </Link>
+                        </Button>
+                        <Button
+                            asChild
+                            variant="outline"
+                            size="lg"
+                            className="px-8 py-4 bg-white/10 backdrop-blur-lg text-gray-200 font-medium rounded-xl border border-white/20 hover:bg-white/20 hover:text-white transition-all duration-300"
+                        >
+                            <Link href="/about">더 알아보기</Link>
+                        </Button>
+                    </motion.div>
+                </div>
+            </motion.div>
+        </section>
+    );
 }
