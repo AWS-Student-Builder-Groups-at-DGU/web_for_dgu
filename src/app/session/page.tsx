@@ -1,9 +1,9 @@
-import { SessionSection } from "@/components/sessionSection"
+import { SessionSection } from '@/components/sessionSection';
 
 export default function SessionPage() {
-    return (
-        <div className="pt-16">
-            <SessionSection />
-        </div>
-    )
+  return (
+    <div className="pt-16">
+      <SessionSection />
+    </div>
+  );
 }
