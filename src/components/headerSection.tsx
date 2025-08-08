@@ -14,7 +14,6 @@ export function HeaderSection() {
 
   const navItems = [
     { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
     { href: '/session', label: 'Sessions' },
     { href: '/member', label: 'Members' },
   ];
@@ -36,11 +35,9 @@ export function HeaderSection() {
               alt={'logo'}
               className="h-15 w-15 text-orange-600"
             />
-            {/*<div className="bg-gradient-to-br from-white to-orange-50 p-2 rounded-lg shadow-md">*/}
-            {/*</div>*/}
             <div className="flex flex-col">
               <span className="font-bold text-lg text-white">
-                AWS Cloud Club
+                AWS Cloud Clubs
               </span>
               <span className="text-xs text-orange-100">
                 Dongguk University

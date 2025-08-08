@@ -127,14 +127,6 @@ export function HeroSection() {
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="px-8 py-4 bg-white/10 backdrop-blur-lg text-gray-200 font-medium rounded-xl border border-white/20 hover:bg-white/20 hover:text-white transition-all duration-300"
-            >
-              <Link href="/about">더 알아보기</Link>
-            </Button>
           </motion.div>
         </div>
       </motion.div>
