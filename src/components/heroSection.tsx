@@ -4,51 +4,39 @@ import { ArrowRight, Code, Users, Network, BookOpenCheck } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { useRef } from 'react';
-import type { MouseEvent } from 'react';
-import { motion, useMotionValue, useTransform, Variants } from 'framer-motion';
+import type { MouseEvent, ReactNode } from 'react';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { FeatureCard } from '@/components/ui/feature-card';
+import {
+  containerVariants,
+  itemVariants,
+} from '@/components/lib/animation-variants';
 
-const FeatureCard = ({
-  icon,
-  title,
-  children,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  children: React.ReactNode;
-}) => (
-  <motion.div
-    className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 text-left border border-white/10 transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:scale-105"
-    variants={itemVariants}
-  >
-    <div className="flex items-center gap-4 mb-3">
-      {icon}
-      <h3 className="text-xl font-bold text-white">{title}</h3>
-    </div>
-    <p className="text-gray-400 text-sm leading-relaxed">{children}</p>
-  </motion.div>
-);
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
+const features: { icon: ReactNode; title: string; description: string }[] = [
+  {
+    icon: <Code className="w-8 h-8 text-orange-400 flex-shrink-0" />,
+    title: 'Hands-On Labs',
+    description:
+      '실제 AWS 콘솔을 다루며 인프라를 구축하고, 애플리케이션을 배포하는 실습 세션을 진행합니다.',
   },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: 'easeInOut',
-    },
+  {
+    icon: <BookOpenCheck className="w-8 h-8 text-orange-400 flex-shrink-0" />,
+    title: '주제별 스터디',
+    description: '자격증 취득, DevOps, CS 등 특정 주제를 깊이 있게 공부합니다.',
   },
-};
+  {
+    icon: <Users className="w-8 h-8 text-orange-400 flex-shrink-0" />,
+    title: '네트워킹',
+    description:
+      'AWS Community Hero와 Builder 초청, Student Community Day 등의 네트워크 기회!',
+  },
+  {
+    icon: <Network className="w-8 h-8 text-orange-400 flex-shrink-0" />,
+    title: 'Global Hackerton',
+    description:
+      '전 세계 대학생들과 겨루는 AWS 주최 공식 해커톤! AWS 공인 수상과 인증의 기회를 얻습니다.',
+  },
+];
 
 export function HeroSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -115,40 +103,14 @@ export function HeroSection() {
           </motion.p>
 
           <div className="grid md:grid-cols-2 gap-4 pt-8 max-w-4xl mx-auto">
-            <FeatureCard
-              icon={<Code className="w-8 h-8 text-orange-400 flex-shrink-0" />}
-              title="Hands-On Labs"
-            >
-              실제 AWS 콘솔을 다루며 인프라를 구축하고,
-              <br /> 애플리케이션을 배포하는 실습 세션을 진행합니다.
-            </FeatureCard>
-            <FeatureCard
-              icon={
-                <BookOpenCheck className="w-8 h-8 text-orange-400 flex-shrink-0" />
-              }
-              title="주제별 스터디"
-            >
-              자격증 취득, DevOps, CS 등 <br />
-              특정 주제를 깊이 있게 공부합니다.
-            </FeatureCard>
-            <FeatureCard
-              icon={<Users className="w-8 h-8 text-orange-400 flex-shrink-0" />}
-              title="네트워킹"
-            >
-              AWS Community Hero와 Builder 초청,
-              <br />
-              Student Community Day 등의 네트워크 기회!
-            </FeatureCard>
-            <FeatureCard
-              icon={
-                <Network className="w-8 h-8 text-orange-400 flex-shrink-0" />
-              }
-              title="Global Hackerton"
-            >
-              전 세계 대학생들과 겨루는 AWS 주최 공식 해커톤!
-              <br />
-              AWS 공인 수상과 인증의 기회를 얻습니다.
-            </FeatureCard>
+            {features.map((feature) => (
+              <FeatureCard
+                key={feature.title}
+                icon={feature.icon}
+                title={feature.title}
+                description={feature.description}
+              />
+            ))}
           </div>
 
           <motion.div
