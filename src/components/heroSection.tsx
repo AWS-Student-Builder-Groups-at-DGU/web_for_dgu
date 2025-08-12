@@ -11,6 +11,7 @@ import {
   containerVariants,
   itemVariants,
 } from '@/components/lib/animation-variants';
+import { RecruitmentStatus } from '@/components/ui/recruitment-card';
 
 const features: { icon: ReactNode; title: string; description: string }[] = [
   {
@@ -112,6 +113,10 @@ export function HeroSection() {
               />
             ))}
           </div>
+
+          <motion.div variants={itemVariants}>
+            <RecruitmentStatus />
+          </motion.div>
 
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center pt-10"

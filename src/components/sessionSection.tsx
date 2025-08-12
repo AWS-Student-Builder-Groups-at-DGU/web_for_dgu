@@ -7,7 +7,7 @@ import {
   containerVariants,
   itemVariants,
 } from '@/components/lib/animation-variants';
-import { SessionCard } from '@/components/ui/SessionCard';
+import { SessionCard } from '@/components/ui/session-card';
 
 const CLOUDFRONT_BASE_URL = process.env.NEXT_PUBLIC_CLOUDFRONT_URL;
 
