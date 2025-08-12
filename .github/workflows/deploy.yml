@@ -24,6 +24,9 @@ jobs:
         run: npm ci
 
       - name: Build 🚩
+        env:
+          NEXT_PUBLIC_CLOUDFRONT_URL: ${{ secrets.NEXT_PUBLIC_CLOUDFRONT_URL }}
+          NEXT_PUBLIC_SCRIPT_URL: ${{ secrets.NEXT_PUBLIC_SCRIPT_URL }}
         run: npm run build
 
       - name: Configure AWS Info ✨
