@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { itemVariants } from '@/components/lib/animation-variants';
 
 interface FeatureCardProps {
-  icon: React.ReactNode;
+  icon?: React.ReactNode; // icon을 선택적으로 변경
   title: string;
   children?: React.ReactNode;
   description?: string;
@@ -27,23 +27,27 @@ export const FeatureCard = ({
     >
       {textAlign === 'center' ? (
         <>
-          <div className="h-12 w-12 mx-auto mb-4 flex items-center justify-center">
-            {icon}
-          </div>
+          {icon && (
+            <div className="h-12 w-12 mx-auto mb-4 flex items-center justify-center">
+              {icon}
+            </div>
+          )}
           <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
-          <p className="text-gray-400 text-sm leading-relaxed">
+          <div className="text-gray-400 text-sm leading-relaxed">
             {description || children}
-          </p>
+          </div>
         </>
       ) : (
         <>
           <div className="flex items-center gap-4 mb-3">
-            <div className="flex items-center justify-center">{icon}</div>
+            {icon && (
+              <div className="flex items-center justify-center">{icon}</div>
+            )}
             <h3 className="text-xl font-bold text-white">{title}</h3>
           </div>
-          <p className="text-gray-400 text-sm leading-relaxed">
+          <div className="text-gray-400 text-sm leading-relaxed">
             {children || description}
-          </p>
+          </div>
         </>
       )}
     </motion.div>

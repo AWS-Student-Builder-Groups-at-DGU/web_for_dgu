@@ -1,10 +1,22 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Mail, PartyPopper, Loader2 } from 'lucide-react';
+
+const formVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: 'easeOut',
+    },
+  },
+};
 
 export function RecruitmentStatus() {
   const [email, setEmail] = useState('');
@@ -24,11 +36,18 @@ export function RecruitmentStatus() {
       return;
     }
 
+    if (!SCRIPT_URL) {
+      console.error('Google Apps Script URL is not configured.');
+      setError('시스템 설정 오류입니다. 관리자에게 문의해주세요.');
+      setStatus('error');
+      return;
+    }
+
     setStatus('submitting');
     setError(null);
 
     try {
-      await fetch(SCRIPT_URL!, {
+      await fetch(SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
@@ -47,9 +66,11 @@ export function RecruitmentStatus() {
   if (status === 'success') {
     return (
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="w-full bg-green-500/10 border border-green-500/30 rounded-lg p-8 transition-all duration-300 hover:bg-green-500/20 text-center flex flex-col items-center gap-4 hover:scale-105"
+        variants={formVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        className="w-full bg-green-500/10 border border-green-500/30 rounded-2xl p-8 transition-all duration-300 hover:bg-green-500/20 text-center flex flex-col items-center gap-4 hover:scale-105"
       >
         <PartyPopper className="w-10 h-10 text-green-400" />
         <h3 className="text-xl font-bold text-white">🎉 신청 완료 🎉</h3>
@@ -62,15 +83,16 @@ export function RecruitmentStatus() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.5, duration: 0.5 }}
+      variants={formVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
       className={`bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10 transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:scale-105`}
     >
       <div className="flex flex-col items-center text-center gap-6">
         <div>
           <h3 className="text-3xl font-bold text-white mt-3 mb-6">
-            1기 모집이 종료되었습니다.
+            모집 알림 신청
           </h3>
           <div className="text-gray-400 text-l mb-2">
             <p>매 학기 시작 직전 신규 멤버를 모집합니다.</p>
