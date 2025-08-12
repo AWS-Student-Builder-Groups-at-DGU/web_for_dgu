@@ -119,7 +119,7 @@ export function HeroSection() {
           </motion.div>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center pt-10"
+            className="flex flex-col sm:flex-row gap-4 justify-center"
             variants={itemVariants}
           >
             <Button

@@ -4,7 +4,7 @@ import { useState, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Mail, PartyPopper } from 'lucide-react';
+import { Mail, PartyPopper, Loader2 } from 'lucide-react';
 
 export function RecruitmentStatus() {
   const [email, setEmail] = useState('');
@@ -49,7 +49,7 @@ export function RecruitmentStatus() {
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="w-full bg-green-500/10 border border-green-500/30 rounded-lg p-8 text-center flex flex-col items-center gap-4"
+        className="w-full bg-green-500/10 border border-green-500/30 rounded-lg p-8 transition-all duration-300 hover:bg-green-500/20 text-center flex flex-col items-center gap-4 hover:scale-105"
       >
         <PartyPopper className="w-10 h-10 text-green-400" />
         <h3 className="text-xl font-bold text-white">🎉 신청 완료 🎉</h3>
@@ -65,7 +65,7 @@ export function RecruitmentStatus() {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5, duration: 0.5 }}
-      className="w-full bg-slate-800/50 border border-slate-700 rounded-lg p-8"
+      className={`bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10 transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:scale-105`}
     >
       <div className="flex flex-col items-center text-center gap-6">
         <div>
@@ -103,7 +103,14 @@ export function RecruitmentStatus() {
                hover:bg-orange-400 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/20
                disabled:bg-slate-600 disabled:cursor-not-allowed disabled:scale-100"
           >
-            {status === 'submitting' ? '신청 중...' : '신청'}
+            {status === 'submitting' ? (
+              <div className="flex items-center justify-center gap-2">
+                <Loader2 className="h-5 w-5 animate-spin" />
+                <span>신청 중...</span>
+              </div>
+            ) : (
+              '신청'
+            )}
           </Button>
         </form>
       </div>
