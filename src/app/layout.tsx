@@ -1,22 +1,14 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
-import './globals.css';
-import { HeaderSection } from '@/components/headerSection';
-import { FooterSection } from '@/components/footerSection';
+import { Inter } from 'next/font/google';
+import Providers from '@/lib/providers';
+import Header from '@/components/Header';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'AWS Cloud Clubs at DGU',
-  description: '동국대학교 ACC 동아리 홈페이지',
+  description:
+    '미래의 클라우드 리더를 양성하는 AWS Cloud Clubs at DGU 공식 홈페이지입니다.',
 };
 
 export default function RootLayout({
@@ -26,10 +18,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={geistMono.className}>
-        <HeaderSection />
-        <main className="min-h-screen">{children}</main>
-        <FooterSection />
+      <body className={inter.className}>
+        <Providers>
+          <Header />
+          {children}
+        </Providers>
       </body>
     </html>
   );
