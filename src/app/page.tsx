@@ -102,9 +102,7 @@ const fadeIn = keyframes`
 `;
 
 export default function Home() {
-  const handleNotify = () => {
-      
-  };
+  const handleNotify = () => {};
 
   return (
     <PageWrapper>
