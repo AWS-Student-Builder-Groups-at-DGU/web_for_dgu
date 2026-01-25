@@ -11,6 +11,7 @@ import {
   CheckCircle2,
   Loader2,
 } from 'lucide-react';
+import { subscribeEmail } from '@/api/recruit';
 
 const TALENTS = [
   {
@@ -39,17 +40,29 @@ export default function RecruitPage() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
 
     setStatus('loading');
 
-    setTimeout(() => {
+    try {
+      await subscribeEmail(email);
+
       setStatus('success');
       setEmail('');
-      setStatus('idle');
-    }, 1500);
+      alert(
+        '🎉 알림 신청이 완료되었습니다! 모집이 시작되면 연락 드리겠습니다 😊',
+      );
+
+      setTimeout(() => setStatus('idle'), 3000);
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message);
+      } else {
+        alert('알 수 없는 오류가 발생했습니다.');
+      }
+    }
   };
 
   return (
