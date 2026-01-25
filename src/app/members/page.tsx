@@ -28,8 +28,7 @@ const MEMBERS_DATA: Record<string, Member[]> = {
       keywords: ['Platform Engineer', 'DevOps'],
       motto:
         '개발을 도구적 관점으로 접근하여, 촘촘한 소통을 통해 팀과 Align되어 비즈니스 가치를 만들어내는 이도형입니다.',
-      imageUrl:
-        'https://acc-web-image-s3.s3.ap-northeast-2.amazonaws.com/members/1.jpeg',
+      imageUrl: `${process.env.NEXT_PUBLIC_S3_URL}/members/1.jpeg`,
       github: 'https://github.com/puretension',
       linkedin: 'https://www.linkedin.com/in/leedohyeong',
     },
@@ -40,8 +39,7 @@ const MEMBERS_DATA: Record<string, Member[]> = {
       keywords: ['SW Engineering', 'DevOps'],
       motto:
         '문제 해결을 위한 다양한 아이디어를 내는 것을 좋아하며, 영감을 얻고 영감을 주는 것이 좋아합니다.',
-      imageUrl:
-        'https://acc-web-image-s3.s3.ap-northeast-2.amazonaws.com/members/2.png',
+      imageUrl: `${process.env.NEXT_PUBLIC_S3_URL}/members/2.png`,
       github: 'https://github.com/bianbbc87',
       linkedin: 'https://www.linkedin.com/in/eunji-jung-173288296/',
     },
@@ -53,8 +51,7 @@ const MEMBERS_DATA: Record<string, Member[]> = {
       keywords: ['Develop', 'DevOps', 'Cloud'],
       motto:
         '커뮤니케이션을 좋아하고, 도전을 즐기는 6년차 풀스택 개발자입니다. 누군가에게 도움이 되는 걸 만들고자 하는 김찬빈입니다.',
-      imageUrl:
-        'https://acc-web-image-s3.s3.ap-northeast-2.amazonaws.com/members/3.png',
+      imageUrl: `${process.env.NEXT_PUBLIC_S3_URL}/members/3.png`,
       github: 'https://github.com/devbini',
       linkedin: 'https://www.linkedin.com/in/devbini',
       blog: 'https://chanbeen.com',
@@ -66,8 +63,7 @@ const MEMBERS_DATA: Record<string, Member[]> = {
       keywords: ['BE', 'DevOps', 'MLOps'],
       motto:
         '엔지니어의 역할에 대해 항상 고민하는 MLOps 주니어 개발자 오현석입니다',
-      imageUrl:
-        'https://acc-web-image-s3.s3.ap-northeast-2.amazonaws.com/members/4.jpeg',
+      imageUrl: `${process.env.NEXT_PUBLIC_S3_URL}/members/4.jpeg`,
       github: 'https://github.com/cupist-owen',
       linkedin: 'https://www.linkedin.com/in/5hseok/',
     },
@@ -79,8 +75,7 @@ const MEMBERS_DATA: Record<string, Member[]> = {
       keywords: ['BE', 'AWS SAA'],
       motto:
         '백엔드와 AWS SAA 직무에 관해서 관심이 많은 컴퓨터공학과 3학년 고동현입니다.',
-      imageUrl:
-        'https://acc-web-image-s3.s3.ap-northeast-2.amazonaws.com/members/5.png',
+      imageUrl: `${process.env.NEXT_PUBLIC_S3_URL}/members/5.png`,
       github: 'https://github.com/Gosorasora',
       linkedin: 'https://www.linkedin.com/in/kosora/',
     },
@@ -90,8 +85,7 @@ const MEMBERS_DATA: Record<string, Member[]> = {
       role: 'Member',
       keywords: ['BE', 'Infra'],
       motto: '꾸준히 노력하며 성장하는, 앞으로 더 잘할 김민서입니다.',
-      imageUrl:
-        'https://acc-web-image-s3.s3.ap-northeast-2.amazonaws.com/members/6.png',
+      imageUrl: `${process.env.NEXT_PUBLIC_S3_URL}/members/6.png`,
       github: 'https://github.com/galllee',
       linkedin:
         'https://www.linkedin.com/in/%EB%AF%BC%EC%84%9C-%EA%B9%80-5ba3b8332/',
@@ -103,8 +97,7 @@ const MEMBERS_DATA: Record<string, Member[]> = {
       keywords: ['BE', '클라우드', '인프라'],
       motto:
         '백엔드 개발과 클라우드 인프라 구축에 관심이 많은 컴퓨터공학과 4학년입니다.',
-      imageUrl:
-        'https://acc-web-image-s3.s3.ap-northeast-2.amazonaws.com/members/7.png',
+      imageUrl: `${process.env.NEXT_PUBLIC_S3_URL}/members/7.png`,
       github: 'https://github.com/ryann1203',
       linkedin: 'http://linkedin.com/in/jiwoo1203',
     },
@@ -115,8 +108,7 @@ const MEMBERS_DATA: Record<string, Member[]> = {
       keywords: ['BE', 'DevOps', 'ios'],
       motto:
         '백엔드를 기반으로 다양한 분야를 탐색하며 폭 넓게 도전해보고 있습니다.',
-      imageUrl:
-        'https://acc-web-image-s3.s3.ap-northeast-2.amazonaws.com/members/8.jpeg',
+      imageUrl: `${process.env.NEXT_PUBLIC_S3_URL}/members/8.jpeg`,
       github: 'https://github.com/Jieun13',
       linkedin: 'https://www.linkedin.com/in/Jieun13/',
     },
@@ -127,8 +119,7 @@ const MEMBERS_DATA: Record<string, Member[]> = {
       keywords: ['BE', 'Infra'],
       motto:
         '막히더라도 포기하지 않고 끝까지 해결하여 배움을 얻는 거를 좋아하는 개발자 서예은입니다.',
-      imageUrl:
-        'https://acc-web-image-s3.s3.ap-northeast-2.amazonaws.com/members/9.png',
+      imageUrl: `${process.env.NEXT_PUBLIC_S3_URL}/members/9.png`,
       github: 'https://github.com/michelle259',
       linkedin:
         'https://www.linkedin.com/in/%EC%98%88%EC%9D%80-%EC%84%9C-4b0613373/',
@@ -140,8 +131,7 @@ const MEMBERS_DATA: Record<string, Member[]> = {
       keywords: ['Spring boot', 'Cloud', 'Network'],
       motto:
         '백엔드와 클라우드에 관심 있어 학부연구생을 시작하게 된 정보통신공학전공 3학년입니다~',
-      imageUrl:
-        'https://acc-web-image-s3.s3.ap-northeast-2.amazonaws.com/members/10.jpg',
+      imageUrl: `${process.env.NEXT_PUBLIC_S3_URL}/members/10.jpg`,
       github: 'https://github.com/koreamax',
       linkedin: 'https://www.linkedin.com/in/koreamax',
     },
@@ -151,8 +141,7 @@ const MEMBERS_DATA: Record<string, Member[]> = {
       role: 'Member',
       keywords: ['BE', 'Infra'],
       motto: '함께 지식을 공유하고 성장하는 것을 좋아하는 개발자 이승현입니다.',
-      imageUrl:
-        'https://acc-web-image-s3.s3.ap-northeast-2.amazonaws.com/members/11.png',
+      imageUrl: `${process.env.NEXT_PUBLIC_S3_URL}/members/11.png`,
       github: 'https://github.com/nanami-tomoe',
       linkedin:
         'https://www.linkedin.com/in/%EC%8A%B9%ED%98%84-%EC%9D%B4-405467291/',
@@ -164,8 +153,7 @@ const MEMBERS_DATA: Record<string, Member[]> = {
       keywords: ['FE', 'DevOps'],
       motto:
         '프론트엔드 개발 경험을 바탕으로, 현재 AWS를 통해 클라우드와 DevOps 분야로 관심을 넓혀가고 있는 컴퓨터 ai 학부 2학년입니다.',
-      imageUrl:
-        'https://acc-web-image-s3.s3.ap-northeast-2.amazonaws.com/members/12.jpg',
+      imageUrl: `${process.env.NEXT_PUBLIC_S3_URL}/members/12.jpg`,
       github: 'https://github.com/seonwoochoi24',
       linkedin: 'https://www.linkedin.com/in/최선우24',
     },
@@ -176,8 +164,7 @@ const MEMBERS_DATA: Record<string, Member[]> = {
       keywords: ['DevSecOps', 'Network'],
       motto:
         '클라우드와 보안에 관심이 많고 커피 한잔 하면서 대화하길 좋아하는 엔지니어입니다.',
-      imageUrl:
-        'https://acc-web-image-s3.s3.ap-northeast-2.amazonaws.com/members/13.jpg',
+      imageUrl: `${process.env.NEXT_PUBLIC_S3_URL}/members/13.jpg`,
       github: 'https://github.com/yunhoch0i',
       linkedin: 'https://www.linkedin.com/in/yunho-choi',
     },
@@ -308,7 +295,7 @@ const MemberCardItem = ({
       </TopRow>
 
       <MottoSection>
-        <p>"{member.motto}"</p>
+        <p>&quot;{member.motto}&quot;</p>
       </MottoSection>
 
       <TagCloud>

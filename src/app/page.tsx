@@ -102,8 +102,6 @@ const fadeIn = keyframes`
 `;
 
 export default function Home() {
-  const handleNotify = () => {};
-
   return (
     <PageWrapper>
       <Container>
@@ -122,8 +120,8 @@ export default function Home() {
               기초부터 함께 배우며 성장할 여러분을 기다립니다.
             </Description>
 
-            <NotifyButton onClick={handleNotify}>
-              모집 알림 신청하기 <Bell size={20} />
+            <NotifyButton href={'/recruit'}>
+              신규 멤버 지원하기 <Bell size={20} />
             </NotifyButton>
           </HeroContent>
 
@@ -403,7 +401,7 @@ const Description = styled.p`
   font-weight: 500;
 `;
 
-const NotifyButton = styled.button`
+const NotifyButton = styled.a`
   display: inline-flex;
   align-items: center;
   padding: 1.1rem 2.5rem;

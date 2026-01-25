@@ -23,7 +23,7 @@ export default function Header() {
         <LogoLink href="/">
           <LogoImageWrapper>
             <Image
-              src="/image/common/logo.png"
+              src={process.env.NEXT_PUBLIC_S3_URL + '/logo.png'}
               alt="AWS Cloud Clubs Logo"
               width={64}
               height={64}

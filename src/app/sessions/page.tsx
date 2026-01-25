@@ -223,7 +223,7 @@ export default function SessionsPage() {
                 <TopicCard key={tIndex}>
                   <ImageWrapper>
                     <Image
-                      src={`https://acc-web-image-s3.s3.ap-northeast-2.amazonaws.com/sessions/${session.id}-${tIndex + 1}.jpg`}
+                      src={`${process.env.NEXT_PUBLIC_S3_URL}/sessions/${session.id}-${tIndex + 1}.jpg`}
                       alt={item.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 500px"
