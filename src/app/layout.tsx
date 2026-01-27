@@ -1,22 +1,39 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
-import './globals.css';
-import { HeaderSection } from '@/components/headerSection';
-import { FooterSection } from '@/components/footerSection';
+import { Inter } from 'next/font/google';
+import Providers from '@/lib/providers';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'AWS Cloud Clubs at DGU',
-  description: '동국대학교 ACC 동아리 홈페이지',
+  description:
+    '미래의 클라우드 리더를 양성하는 AWS Cloud Clubs at DGU 공식 홈페이지입니다.',
+  openGraph: {
+    title: 'AWS Cloud Clubs at DGU',
+    description:
+      'AWS Cloud Clubs at DGU 공식 홈페이지입니다.',
+    url: 'https://acc-dgu.com/',
+    siteName: 'AWS Cloud Club at DGU',
+    images: [
+      {
+        url: process.env.NEXT_PUBLIC_S3_URL + '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'AWS Cloud Clubs at DGU 공식 로고',
+      },
+    ],
+    locale: 'ko_KR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AWS Cloud Clubs at DGU',
+    description:
+      'AWS Cloud Clubs at DGU 공식 홈페이지입니다.',
+    images: [process.env.NEXT_PUBLIC_S3_URL + '/og-image.png'],
+  },
 };
 
 export default function RootLayout({
@@ -26,10 +43,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={geistMono.className}>
-        <HeaderSection />
-        <main className="min-h-screen">{children}</main>
-        <FooterSection />
+      <body className={inter.className}>
+        <Providers>
+          <Header />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
