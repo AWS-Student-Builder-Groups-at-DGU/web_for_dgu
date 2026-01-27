@@ -1,0 +1,47 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - develop # 차후 변경
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code 🚩
+        uses: actions/checkout@v4
+
+      - name: Set up Node 🚩
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.17'
+          cache: 'npm'
+
+      - name: Install dep 🚩
+        run: npm ci
+
+      - name: Build 🚩
+        env:
+          NEXT_PUBLIC_CLOUDFRONT_URL: ${{ secrets.NEXT_PUBLIC_CLOUDFRONT_URL }}
+          NEXT_PUBLIC_SCRIPT_URL: ${{ secrets.NEXT_PUBLIC_SCRIPT_URL }}
+          NEXT_PUBLIC_S3_URL: ${{ secrets.NEXT_PUBLIC_S3_URL }}
+          NEXT_PUBLIC_AWS_LAMBDA_URL: ${{ secrets.NEXT_PUBLIC_AWS_LAMBDA_URL }}
+        run: npm run build
+
+      - name: Configure AWS Info ✨
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Deploy to S3 ✨
+        run: |
+          aws s3 sync ./out s3://${{ secrets.AWS_BUCKET_NAME }} --delete
+
+      - name: Invalidate CloudFront cache 🎉
+        run: |
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION }} --paths "/*"
