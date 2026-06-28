@@ -32,7 +32,7 @@ export default function Footer() {
             </Description>
             <SocialLinks>
               <SocialButton
-                href="https://www.linkedin.com/in/aws-cloud-club-at-dongguk-94265a36b/"
+                href="https://www.linkedin.com/company/aws-student-builder-group-at-dongguk-university"
                 target="_blank"
                 rel="noopener noreferrer"
                 $color="#0077B5"
@@ -40,7 +40,7 @@ export default function Footer() {
                 <Linkedin size={20} />
               </SocialButton>
               <SocialButton
-                href="https://www.instagram.com/awscloudclubsdgu/"
+                href="https://www.instagram.com/asbg_dgu"
                 target="_blank"
                 rel="noopener noreferrer"
                 $color="#E4405F"
@@ -67,7 +67,7 @@ export default function Footer() {
                 AWS Korea <ExternalLink size={12} />
               </a>
               <a
-                href="https://github.com/AWS-Cloud-Club-at-Dongguk"
+                href="https://github.com/AWS-Student-Builder-Groups-at-DGU"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -79,7 +79,7 @@ export default function Footer() {
 
         <FooterBottom>
           <p>
-            © {currentYear} AWS Cloud Clubs at Dongguk University. All rights
+            © {currentYear} AWS Student Builder Groups at Dongguk University. All rights
             reserved.
           </p>
         </FooterBottom>
