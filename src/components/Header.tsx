@@ -43,7 +43,7 @@ export default function Header() {
               priority
             />
           </LogoImageWrapper>
-          <span className={'logo-text'}>AWS Cloud Clubs at DGU</span>
+          <span className={'logo-text'}>AWS Student Builder Groups at DGU</span>
         </LogoLink>
 
         <NavMenu>

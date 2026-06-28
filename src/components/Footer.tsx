@@ -23,7 +23,7 @@ export default function Footer() {
                   height={64}
                 />
               </LogoImageWrapper>
-              <span>AWS Cloud Clubs at DGU</span>
+              <span>AWS Student Builder Groups at DGU</span>
             </LogoLink>
             <Description>
               동국대학교 학생들을 위한 AWS 클라우드 커뮤니티입니다.
