@@ -134,7 +134,6 @@ const LogoImageWrapper = styled.div`
 
   img {
     object-fit: contain;
-    filter: drop-shadow(0 1px 4px black);
   }
 `;
 
