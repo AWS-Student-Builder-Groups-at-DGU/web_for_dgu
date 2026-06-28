@@ -20,7 +20,7 @@ interface Member {
 }
 
 const MEMBERS_DATA: Record<string, Member[]> = {
-  '1기': [
+  'ACC 1기': [
     {
       id: 1,
       name: '이도형',
@@ -169,6 +169,7 @@ const MEMBERS_DATA: Record<string, Member[]> = {
       linkedin: 'https://www.linkedin.com/in/yunho-choi',
     },
   ],
+  'ASBG 1기': [],
 };
 
 const fadeIn = keyframes`
@@ -177,7 +178,7 @@ const fadeIn = keyframes`
 `;
 
 export default function MembersPage() {
-  const [activeGen, setActiveGen] = useState('1기');
+  const [activeGen, setActiveGen] = useState('ACC 1기');
   const [mounted, setMounted] = useState(false);
 
   const gens = Object.keys(MEMBERS_DATA);
@@ -203,7 +204,7 @@ export default function MembersPage() {
           <h1>
             Meet the <span className="highlight">Architects</span>
           </h1>
-          <p>AWS Cloud Clubs at DGU를 이끄는 멤버들을 소개합니다.</p>
+          <p>AWS Student Builder Groups at DGU를 이끄는 멤버들을 소개합니다.</p>
         </HeaderSection>
 
         <TabWrapper>

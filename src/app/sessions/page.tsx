@@ -20,7 +20,7 @@ interface Session {
 }
 
 const SESSIONS_DATA: Record<string, Session[]> = {
-  '1기': [
+  'ACC 1기': [
     {
       id: 1,
       mainTheme: 'Cloud Networking & Observability',
@@ -164,6 +164,7 @@ const SESSIONS_DATA: Record<string, Session[]> = {
       ],
     },
   ],
+  'ASBG 1기': [],
 };
 
 const slideUp = keyframes`
@@ -172,7 +173,7 @@ const slideUp = keyframes`
 `;
 
 export default function SessionsPage() {
-  const [activeGen, setActiveGen] = useState('1기');
+  const [activeGen, setActiveGen] = useState('ACC 1기');
   const [mounted, setMounted] = useState(false);
   const gens = Object.keys(SESSIONS_DATA);
   const sessions = SESSIONS_DATA[activeGen] || [];
