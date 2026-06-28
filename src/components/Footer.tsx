@@ -17,8 +17,8 @@ export default function Footer() {
             <LogoLink href="/">
               <LogoImageWrapper>
                 <Image
-                  src={process.env.NEXT_PUBLIC_S3_URL + '/logo.png'}
-                  alt="AWS Cloud Clubs Logo"
+                  src="/Image/common/asbg.png"
+                  alt="AWS Student Builder Groups Logo"
                   width={64}
                   height={64}
                 />

@@ -36,8 +36,8 @@ export default function Header() {
         <LogoLink href="/" onClick={() => closeMenu()}>
           <LogoImageWrapper>
             <Image
-              src={process.env.NEXT_PUBLIC_S3_URL + '/logo.png'}
-              alt="AWS Cloud Clubs Logo"
+              src="/Image/common/asbg.png"
+              alt="AWS Student Builder Groups Logo"
               width={64}
               height={64}
               priority
