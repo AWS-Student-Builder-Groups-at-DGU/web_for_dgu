@@ -114,7 +114,7 @@ export default function Home() {
               Journey at <span className="highlight">DGU.</span>
             </Title>
             <Description>
-              <strong>AWS Cloud Club</strong>은 개발 실력보다 열정을 봅니다.
+              <strong>AWS Student Builder Groups</strong>는 개발 실력보다 열정을 봅니다.
               <br />
               클라우드가 처음이라도 괜찮습니다. <br />
               기초부터 함께 배우며 성장할 여러분을 기다립니다.
